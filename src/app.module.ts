@@ -8,11 +8,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'mariadb',
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'didibu2000',
+      password: '14122001',
       database: 'test',
       logging: true,
       autoLoadEntities: true,

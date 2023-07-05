@@ -1,6 +1,5 @@
 import { Body, Controller, Get, HttpCode, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard'
 import { CreateUserDto } from './dto/createUser.dto';
 import { SigninUserDto } from './dto/loginUser.dto';
 @Controller('auth')
@@ -18,9 +17,10 @@ export class AuthController {
     return this.authService.signIn(signinUserDto);
   }
 
-  @UseGuards(AuthGuard)
-  @Get('profile')
-  getProfile(@Request() req){
-    return req.user;
+  @HttpCode(200)
+  @Post('active')
+  signInActiveDirectory(@Body() signinUserDto: SigninUserDto){
+    return this.authService.signInActiveDirectory(signinUserDto);
   }
+
 }
